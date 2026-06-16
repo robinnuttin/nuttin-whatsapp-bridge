@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: nuttin-whatsapp-bridge
+    runtime: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NUTTIN_WEBHOOK_URL
+        sync: false
+      - key: MY_WA_NUMBER
+        sync: false
