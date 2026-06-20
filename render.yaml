@@ -2,10 +2,16 @@ services:
   - type: web
     name: nuttin-whatsapp-bridge
     runtime: node
+    plan: free
+    repo: https://github.com/robinnuttin/nuttin-whatsapp-bridge
+    branch: main
     buildCommand: npm install
     startCommand: node index.js
+    healthCheckPath: /health
     envVars:
       - key: NUTTIN_WEBHOOK_URL
-        sync: false
+        value: https://nuttin-dashboard.vercel.app/api/whatsapp/webhook
       - key: MY_WA_NUMBER
-        sync: false
+        value: "32456559189"
+      - key: NODE_ENV
+        value: production
